@@ -1,0 +1,12 @@
+backend/node_modules
+backend/.env
+JobSheet/ui-react-tailwind/node_modules
+JobSheet/ui-react-tailwind/.env
+Menentukan-Bentuk-Style-Komponen-UI/React-Router-Tailwind/node_modules
+Menentukan-Bentuk-Style-Komponen-UI/React-Router-Tailwind/.env
+Mengatur-Aktif-Pasif-Komponen-Dialog/React-Router-Tailwind/node_modules
+Mengatur-Aktif-Pasif-Komponen-Dialog/React-Router-Tailwind/.env
+Mengatur-Penempatan-UI-Dialog/React-Router-Tailwind/node_modules
+Mengatur-Penempatan-UI-Dialog/React-Router-Tailwind/.env
+Penerapan/React-Router-Tailwind/node_modules
+Penerapan/React-Router-Tailwind/.env
