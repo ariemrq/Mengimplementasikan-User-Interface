@@ -4,7 +4,6 @@ import Layout from './components/Layout';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import DataPeserta from './pages/DataPeserta';
-import Laporan from './pages/Laporan';
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
             <Route path="/peserta" element={<DataPeserta />} />
           </Routes>
         </Layout>
-        <Footer/>
+      <Footer/>
     </BrowserRouter>
   );
 }
