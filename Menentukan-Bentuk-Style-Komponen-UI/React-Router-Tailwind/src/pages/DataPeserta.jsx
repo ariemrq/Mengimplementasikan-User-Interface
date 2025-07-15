@@ -4,16 +4,14 @@ import { AuthContext } from "../context/AuthContext";
 import axios from 'axios';
 import Table from '../components/Table';
 import Button from '../components/Button';
-import Form from '../components/Form';
 import Swal from "sweetalert2";
+import { useNavigate } from 'react-router-dom';
 
 function DataPeserta() {
   const [peserta, setPeserta] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showForm, setShowForm] = useState(false);
-  const [selectedPeserta, setSelectedPeserta] = useState(null);
-  const [mode, setMode] = useState("create");
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
@@ -34,63 +32,17 @@ function DataPeserta() {
     setLoading(false);
   };
 
-  const handleCreate = () => {
-    setSelectedPeserta(null);
-    setMode("create");
-    setShowForm(true);
-  };
-
-  const handleUpdate = (peserta) => {
-    setSelectedPeserta(peserta);
-    setMode("edit");
-    setShowForm(true);
-  };
-
-  const handleRead = (peserta) => {
-    setSelectedPeserta(peserta);
-    setMode("view");
-    setShowForm(true);
-  };
-
   const handleDelete = async (peserta) => {
     const konfirmasi = confirm(`Hapus ${peserta.name}?`);
     if (!konfirmasi) return;
     try {
       await axios.delete(`${baseUrl}/peserta/${peserta.id}`, {
-          headers: { Authorization: `Bearer ${user.accessToken}` },
-        });
+        headers: { Authorization: `Bearer ${user.accessToken}` },
+      });
       fetchData();
       Swal.fire("Berhasil", "Peserta telah dihapus", "success");
     } catch (err) {
       alert("Gagal menghapus data");
-    }
-  };
-
-  const handleSubmitForm = async (formData) => {
-    try {
-      let res; 
-      if (mode === "edit" && selectedPeserta) {
-        await axios.put(`${baseUrl}/peserta/${selectedPeserta.id}`, formData, {
-          headers: { Authorization: `Bearer ${user.accessToken}` },
-        });
-      } else {
-        await axios.post(`${baseUrl}/peserta`, formData, {
-          headers: { Authorization: `Bearer ${user.accessToken}` },
-        });
-      }
-      setShowForm(false);
-      fetchData();
-      Swal.fire({
-      title: res?.data?.message || "Data berhasil disimpan",
-      icon: "success",
-    });
-    } catch (err) {
-      console.error("Error saving:", err.response?.data || err.message);
-      Swal.fire({
-        title: "Gagal menyimpan data",
-        text: err.response?.data?.message || err.message,
-        icon: "error",
-      });
     }
   };
 
@@ -103,8 +55,8 @@ function DataPeserta() {
       accessor: 'actions',
       render: (row) => (
         <div className="flex gap-2">
-          <Button variant="secondary" onClick={() => handleRead(row)}>View</Button>
-          <Button variant="success" onClick={() => handleUpdate(row)}>Edit</Button>
+          <Button variant="secondary" onClick={() => navigate(`/peserta/view/${row.id}`)}>View</Button>
+          <Button variant="success" onClick={() => navigate(`/peserta/edit/${row.id}`)}>Edit</Button>
           <Button variant="danger" onClick={() => handleDelete(row)}>Hapus</Button>
         </div>
       ),
@@ -115,18 +67,9 @@ function DataPeserta() {
     <div>
       <h2 className="text-2xl font-semibold mb-4 text-blue-700">Data Peserta</h2>
       <div className="mb-4">
-        <Button onClick={handleCreate}>+ Tambah Peserta</Button>
+        <Button onClick={() => navigate("/peserta/tambah")}>+ Tambah Peserta</Button>
       </div>
       {loading ? <p>Loading...</p> : <Table columns={columns} data={peserta} />}
-
-      {showForm && (
-        <Form
-          data={selectedPeserta}
-          mode={mode}
-          onSubmit={handleSubmitForm}
-          onClose={() => setShowForm(false)}
-        />
-      )}
     </div>
   );
 }

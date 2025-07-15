@@ -1,13 +1,14 @@
-function Input({ type = "text", name, value, onChange, placeholder, required = false }) {
+function Input({ name, value, onChange, placeholder, required, readOnly }) {
   return (
     <input
-      type={type}
+      type="text"
       name={name}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
       required={required}
-      className="border border-gray-300 px-4 py-2 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+      readOnly={readOnly}
+      className={`p-2 border rounded w-full ${readOnly ? 'bg-gray-100 text-gray-500' : ''}`}
     />
   );
 }
