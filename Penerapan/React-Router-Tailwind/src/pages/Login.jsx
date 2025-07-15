@@ -32,7 +32,7 @@ function Login({ onClose }) {
   };
 
   return (
-    <div>
+    <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow mt-8">
       <h2 className="text-2xl font-semibold mb-4 text-blue-600 text-center">Form Login</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required

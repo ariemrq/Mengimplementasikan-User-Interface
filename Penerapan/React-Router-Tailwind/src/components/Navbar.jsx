@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { Menu, X } from "lucide-react";
 
-function Navbar({ onOpenLogin }) {
+function Navbar() {
   const { user, setUser } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -27,7 +27,7 @@ function Navbar({ onOpenLogin }) {
           <li><Link to="/peserta" className="hover:underline">Data Peserta</Link></li>
           {user === null ? (
             <>
-              <li><button onClick={onOpenLogin} className="hover:underline">Login</button></li>
+              <li><Link to="/login" className="hover:underline">Login</Link></li>
               <li><Link to="/register" className="hover:underline">Register</Link></li>
             </>
           ) : (
@@ -46,8 +46,8 @@ function Navbar({ onOpenLogin }) {
             <li><Link to="/peserta" onClick={() => setMenuOpen(false)} className="hover:underline">Data Peserta</Link></li>
             {user === null ? (
               <>
-                <li><button onClick={() => { onOpenLogin(); setMenuOpen(false); }} className="hover:underline">Login</button></li>
-                <li><Link to="/peserta" className="hover:underline">Data Peserta</Link></li>
+                <li><Link to="/login" className="hover:underline">Login</Link></li>
+                <li><Link to="/register" className="hover:underline">Register</Link></li>
               </>
             ) : (
               <>
