@@ -1,7 +1,7 @@
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { baseUrl } from "../config/constants";
+import { baseUrl } from "../config/Constants";
 import { AuthContext } from "../context/AuthContext";
 import Form from "../components/Form";
 import Swal from "sweetalert2";

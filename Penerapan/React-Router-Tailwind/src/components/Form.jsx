@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
 import axios from "axios";
-import { baseUrl } from "../config/constants";
+import { baseUrl } from "../config/Constants";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";

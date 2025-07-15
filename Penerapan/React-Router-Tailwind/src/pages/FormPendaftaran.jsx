@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { baseUrl } from "../config/constants";
+import { baseUrl } from "../config/Constants";
 import axios from 'axios';
 
 function Pendaftaran() {

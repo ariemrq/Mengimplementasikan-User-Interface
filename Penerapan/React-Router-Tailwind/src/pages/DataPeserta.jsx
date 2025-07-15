@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { baseUrl } from "../config/constants";
+import { baseUrl } from "../config/Constants";
 import { AuthContext } from "../context/AuthContext";
 import axios from 'axios';
 import Table from '../components/Table';

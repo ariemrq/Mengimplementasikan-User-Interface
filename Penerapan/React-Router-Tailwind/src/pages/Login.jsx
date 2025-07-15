@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { baseUrl } from "../config/constants";
+import { baseUrl } from "../config/Constants";
 import { AuthContext } from "../context/AuthContext";
 import axios from 'axios';
 
