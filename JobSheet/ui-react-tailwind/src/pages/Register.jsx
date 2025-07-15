@@ -7,11 +7,9 @@ import Button from '../components/Button';
 function Register({ onSwitchToLogin }) {
   const [form, setForm] = useState({ nama: '', email: '', password: '' });
   const [status, setStatus] = useState('');
-
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('Mengirim...');
@@ -22,7 +20,6 @@ function Register({ onSwitchToLogin }) {
       setStatus('Gagal mengirim data');
     }
   };
-
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-4 text-blue-600 text-center">Form Pendaftaran</h2>

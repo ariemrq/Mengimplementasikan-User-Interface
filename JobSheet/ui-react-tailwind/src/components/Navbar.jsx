@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { Menu, X } from "lucide-react";
 
-function Navbar({ onOpenLogin, onOpenRegister }) {
+function Navbar() {
   const { user, setUser } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -27,8 +27,8 @@ function Navbar({ onOpenLogin, onOpenRegister }) {
           <li><Link to="/peserta" className="hover:underline">Data Peserta</Link></li>
           {user === null ? (
             <>
-              <li><button onClick={onOpenLogin} className="hover:underline">Login</button></li>
-              <li><button onClick={onOpenRegister} className="hover:underline">Register</button></li>
+              <li><Link to="/login" className="hover:underline">Login</Link></li>
+              <li><Link to="/register" className="hover:underline">Register</Link></li>
             </>
           ) : (
             <>
@@ -46,8 +46,8 @@ function Navbar({ onOpenLogin, onOpenRegister }) {
             <li><Link to="/peserta" onClick={() => setMenuOpen(false)} className="hover:underline">Data Peserta</Link></li>
             {user === null ? (
               <>
-                <li><button onClick={() => { onOpenLogin(); setMenuOpen(false); }} className="hover:underline">Login</button></li>
-                <li><button onClick={() => { onOpenRegister(); setMenuOpen(false); }} className="hover:underline">Register</button></li>
+                <li><Link to="/login" className="hover:underline">Login</Link></li>
+                <li><Link to="/register" className="hover:underline">Register</Link></li>
               </>
             ) : (
               <>

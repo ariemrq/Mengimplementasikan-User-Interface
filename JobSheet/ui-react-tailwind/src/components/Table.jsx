@@ -22,10 +22,8 @@ function Table({ columns, data }) {
                 {columns.map((col, colIndex) => (
                   <td key={colIndex} className="px-4 py-2 border-t border-gray-100">
                     {col.accessor === 'actions'
-                              ? col.render(row)
-                              : col.accessor === 'no'
-                                ? rowIndex + 1
-                                : row[col.accessor]}
+                      ? col.render(row)
+                      : row[col.accessor]}
                   </td>
                 ))}
               </tr>

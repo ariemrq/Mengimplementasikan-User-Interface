@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { baseUrl } from "../config/constants";
+import { baseUrl } from "../config/Constants";
 import { AuthContext } from "../context/AuthContext";
 import axios from 'axios';
 import Input from '../components/Input';
@@ -11,7 +11,6 @@ function Login({ onSwitchToRegister, onClose  }) {
   const [status, setStatus] = useState('');
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -26,14 +25,12 @@ function Login({ onSwitchToRegister, onClose  }) {
       localStorage.setItem("user", JSON.stringify(dataLogin));
       setUser(dataLogin);
       setStatus('Login berhasil!');
-      //onSuccess();
       if (onClose) onClose();
       navigate('/');
     } catch (err) {
       setStatus('Email atau password salah');
     }
   };
-
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-4 text-blue-600 text-center">Form Login</h2>
